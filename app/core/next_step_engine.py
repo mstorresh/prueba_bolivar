@@ -1,9 +1,6 @@
 """
 Paso 5: Decisión del siguiente paso.
 
-Lógica puramente determinística basada en las delegaciones del YAML.
-No interviene el LLM. La categoría clasificada determina el siguiente paso:
-
 - GESTION_EXTERNA     → requiere atención del personal de la empresa
 - RESPUESTA_DIRECTA   → el BPO puede resolver directamente
 - Si la categoría no está en ninguna delegación → GESTION_EXTERNA por seguridad

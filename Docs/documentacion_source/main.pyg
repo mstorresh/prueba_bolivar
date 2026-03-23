@@ -1,0 +1,4 @@
+@app.post("/predict")
+def predict(data: Input):
+    result = model.process(data.text)
+    return {"response": result}

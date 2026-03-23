@@ -5,8 +5,6 @@ Solo se ejecuta si el siguiente paso es GESTION_EXTERNA.
 Usa el registro de plataformas para obtener el adaptador correcto
 según la configuración de la empresa, y crea el caso.
 
-Si la plataforma falla, el estado queda como PENDIENTE_REINTENTO
-y se registra el error para monitoreo.
 """
 import logging
 from app.config.loader import get_company_config

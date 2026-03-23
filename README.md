@@ -17,7 +17,7 @@ enrutamiento y creación de caso externo.
 
 ```bash
 git clone <url-del-repo>
-cd bpo-ai-service
+cd prueba_bolivar
 pip install -r requirements.txt
 cp .env.default .env
 # Editar .env con tu API key y proveedor LLM
@@ -51,6 +51,12 @@ Edita el archivo `.env` con los siguientes valores:
 
 ```bash
 bash run_api.sh
+```
+
+o pueden correr directamente en la terminal el comando:
+
+```bash
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 El servicio queda disponible en: `http://localhost:8000`

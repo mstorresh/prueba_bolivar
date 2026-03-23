@@ -1,7 +1,3 @@
-"""
-Tests de integración del pipeline completo.
-Mockea el LLM y verifica que los 6 pasos se encadenen correctamente.
-"""
 import sys
 from pathlib import Path
 from unittest.mock import patch, MagicMock
@@ -13,7 +9,7 @@ from app.models.enums import ProximoPaso, EstadoCaso, Prioridad
 
 
 def _make_input(descripcion: str, compania: str = "GASES DEL ORINOCO", solicitud_id: str = "REQ-INT-001"):
-    """Helper: crea un SolicitudInput sin depender de Pydantic."""
+    """Helper: crea un SolicitudInput"""
     class FakeInput:
         pass
     obj = FakeInput()
@@ -26,7 +22,7 @@ def _make_input(descripcion: str, compania: str = "GASES DEL ORINOCO", solicitud
 def _mock_llm_responses(validacion: dict, clasificacion: dict, justificacion: dict):
     """
     Crea un mock del LLM que retorna respuestas distintas
-    según el orden de llamada: validación → clasificación → justificación.
+    según el orden: validación → clasificación → justificación.
     """
     mock_client = MagicMock()
     mock_client.complete_json.side_effect = [validacion, clasificacion, justificacion]
@@ -112,7 +108,6 @@ class TestPipelineIntegracion:
         assert output.estado == EstadoCaso.CERRADO
         assert output.solicitud_tipo is None       # No se clasificó
         assert output.solicitud_prioridad is None  # No se asignó prioridad
-        # El LLM solo fue llamado UNA vez (solo validación)
         assert mock_client.complete_json.call_count == 1
 
     def test_flujo_con_plataforma_error(self):
@@ -175,7 +170,6 @@ class TestPipelineIntegracion:
         assert output.estado is not None
 
 
-# ── Runner manual ──────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     tests = TestPipelineIntegracion()
@@ -195,6 +189,6 @@ if __name__ == "__main__":
             print(f"  Check: {desc}")
             passed += 1
         except Exception as e:
-            print(f"  ❌ {desc}: {e}")
+            print(f"  Error: {desc}: {e}")
 
     print(f"\n{'Done' if passed == len(casos) else 'Warning '} {passed}/{len(casos)} tests pasaron\n")

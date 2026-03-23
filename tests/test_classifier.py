@@ -1,7 +1,3 @@
-"""
-Tests para el Paso 2: clasificación de solicitudes.
-Usa mocks del LLM para no requerir API key real.
-"""
 import sys
 from pathlib import Path
 from unittest.mock import patch, MagicMock
@@ -105,9 +101,6 @@ class TestClasificador:
         assert ctx.clasificacion.categoria == "Reclamo comercial"
         assert ctx.clasificacion.confianza == "media"
 
-
-# ── Runner manual ──────────────────────────────────────────────────────────────
-
 if __name__ == "__main__":
     tests = TestClasificador()
     casos = [
@@ -128,6 +121,6 @@ if __name__ == "__main__":
             print(f"  Check {descripcion}")
             passed += 1
         except Exception as e:
-            print(f"  ❌ {descripcion}: {e}")
+            print(f"  Error: {descripcion}: {e}")
 
     print(f"\n{'Done' if passed == len(casos) else 'Warning '} {passed}/{len(casos)} tests pasaron\n")

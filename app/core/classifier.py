@@ -1,10 +1,3 @@
-"""
-Paso 2: Clasificación de la solicitud.
-
-Usa el LLM para clasificar el texto libre en una de las categorías
-definidas en la configuración de la empresa.
-El LLM solo puede elegir entre las categorías del YAML, nunca inventar una nueva.
-"""
 import logging
 from app.llm.client import get_llm_client, LLMParseError
 from app.llm.prompts import CLASIFICACION_SYSTEM, clasificacion_user_prompt

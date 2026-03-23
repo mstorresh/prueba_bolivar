@@ -1,13 +1,3 @@
-"""
-Registro de plataformas externas disponibles.
-
-Para agregar una nueva plataforma:
-1. Crear la clase en un nuevo archivo (ej. salesforce_platform.py)
-2. Importarla aquí
-3. Agregarla al dict _REGISTRY con su clave
-
-Ningún otro archivo necesita modificarse.
-"""
 import logging
 from app.integrations.base_platform import PlataformaExternaBase
 from app.integrations.mock_platform import MockPlatform

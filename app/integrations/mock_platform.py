@@ -1,10 +1,3 @@
-"""
-Implementación mock de la plataforma externa.
-Simula la creación de casos retornando un ID ficticio.
-Se usa en desarrollo y pruebas. En producción se reemplaza
-por un adaptador real (Salesforce, ServiceNow, etc.) sin tocar
-ningún otro archivo — solo se registra en platform_registry.py.
-"""
 import uuid
 import logging
 from app.integrations.base_platform import PlataformaExternaBase, CasoExterno, ResultadoCasoExterno

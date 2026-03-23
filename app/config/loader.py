@@ -5,9 +5,6 @@ from typing import Optional
 from functools import lru_cache
 from pydantic import BaseModel, field_validator
 
-
-# ── Modelos de configuración ───────────────────────────────────────────────────
-
 class ReglaProioridad(BaseModel):
     categoria: str
     palabras_clave: list[str] = []
@@ -27,7 +24,7 @@ class PlataformaExterna(BaseModel):
 
 class PrioridadExterna(BaseModel):
     activa: bool = False
-    endpoint_env_var: Optional[str] = None  # Nombre de la variable de entorno con la URL
+    endpoint_env_var: Optional[str] = None  
 
     def get_endpoint(self) -> Optional[str]:
         """Resuelve la URL real desde la variable de entorno."""
@@ -59,7 +56,6 @@ class CompanyConfig(BaseModel):
         return v
 
 
-# ── Loader ─────────────────────────────────────────────────────────────────────
 
 COMPANIES_DIR = Path(__file__).parent / "companies"
 
@@ -107,7 +103,6 @@ def _list_registered_companies() -> list[str]:
     ]
 
 
-# ── Errores personalizados ─────────────────────────────────────────────────────
 
 class CompanyNotFoundError(Exception):
     def __init__(self, company_name: str, registered_companies: list[str]):

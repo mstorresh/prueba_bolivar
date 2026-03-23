@@ -1,6 +1,3 @@
-"""
-Tests para Paso 4 (justificación) y Paso 5 (siguiente paso).
-"""
 import sys
 from pathlib import Path
 from unittest.mock import patch, MagicMock
@@ -45,7 +42,6 @@ def _make_contexto_completo(
     return ctx
 
 
-# ── Tests Paso 4: Justificación ────────────────────────────────────────────────
 
 class TestJustificacion:
 
@@ -91,7 +87,6 @@ class TestJustificacion:
         assert "Baja" in ctx.justificacion
 
 
-# ── Tests Paso 5: Siguiente paso ───────────────────────────────────────────────
 
 class TestSiguientePaso:
 
@@ -142,7 +137,6 @@ class TestSiguientePaso:
         assert ctx.proximo_paso == ProximoPaso.RESPUESTA_DIRECTA
 
 
-# ── Runner manual ──────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     print("\n Tests Paso 4 - Justificación\n")
@@ -180,5 +174,5 @@ if __name__ == "__main__":
             print(f"  Check: {desc}")
             passed += 1
         except Exception as e:
-            print(f"  ❌ {desc}: {e}")
+            print(f"  Error: {desc}: {e}")
     print(f"\n{'Done' if passed == len(casos_n) else 'Warning '} {passed}/{len(casos_n)} tests pasaron\n")

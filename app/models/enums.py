@@ -1,7 +1,3 @@
-"""
-Enums compartidos entre modelos internos y modelos de API.
-Separados para evitar dependencia circular.
-"""
 from enum import Enum
 
 

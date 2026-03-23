@@ -1,6 +1,3 @@
-"""
-Endpoints REST del microservicio BPO-AI.
-"""
 import logging
 from fastapi import APIRouter, HTTPException, status
 from app.core.pipeline import ejecutar_pipeline

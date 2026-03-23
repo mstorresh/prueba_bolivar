@@ -1,7 +1,3 @@
-"""
-Tests para el Paso 3: motor de prioridad.
-Cubre reglas locales, servicio externo y fallback.
-"""
 import sys
 from pathlib import Path
 from unittest.mock import patch, MagicMock
@@ -150,7 +146,6 @@ class TestMotorPrioridad:
         assert ctx.prioridad.fuente == "fallback"
 
 
-# ── Runner manual ──────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     tests = TestMotorPrioridad()
@@ -173,6 +168,6 @@ if __name__ == "__main__":
             print(f"  Check {descripcion}")
             passed += 1
         except Exception as e:
-            print(f"  ❌ {descripcion}: {e}")
+            print(f"  Error: {descripcion}: {e}")
 
     print(f"\n{'Done' if passed == len(casos) else 'Warning '} {passed}/{len(casos)} tests pasaron\n")

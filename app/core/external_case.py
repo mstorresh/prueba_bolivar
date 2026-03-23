@@ -1,11 +1,3 @@
-"""
-Paso 6: Creación del caso en la plataforma externa.
-
-Solo se ejecuta si el siguiente paso es GESTION_EXTERNA.
-Usa el registro de plataformas para obtener el adaptador correcto
-según la configuración de la empresa, y crea el caso.
-
-"""
 import logging
 from app.config.loader import get_company_config
 from app.integrations.platform_registry import get_platform

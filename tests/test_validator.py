@@ -1,7 +1,3 @@
-"""
-Tests para el Paso 1: validación semántica.
-Usa un mock del LLM para no requerir API key real en los tests.
-"""
 import sys
 import json
 from pathlib import Path
@@ -132,7 +128,6 @@ class TestValidador:
         assert ctx.validacion.entidades.numero_id is None
 
 
-# ── Runner manual ──────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     tests = TestValidador()

@@ -1,10 +1,3 @@
-"""
-Paso 5: Decisión del siguiente paso.
-
-- GESTION_EXTERNA     → requiere atención del personal de la empresa
-- RESPUESTA_DIRECTA   → el BPO puede resolver directamente
-- Si la categoría no está en ninguna delegación → GESTION_EXTERNA por seguridad
-"""
 import logging
 from app.config.loader import get_company_config
 from app.models.internal_models import ContextoPipeline

@@ -81,6 +81,9 @@ class GroqClient(LLMClient):
         )
         return response.choices[0].message.content.strip()
 
+# ---------------------------------------------------------------------------------------------------
+# si  se tiene un token directo de openai se descomenta esta clase y se comenta la que se esta utilizando, en mi caso toco de la segunda forma ya que estaba usando el LLM por medio de github
+#-------------------------------------------------------------------------------------------------
 
 # class OpenAIClient(LLMClient):
 #     """Cliente para OpenAI."""

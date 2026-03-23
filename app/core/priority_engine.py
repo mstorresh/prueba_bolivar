@@ -1,17 +1,3 @@
-"""
-Paso 3: Asignación de prioridad.
-
-Dos estrategias según la configuración de la empresa:
-
-1. Servicio externo (ej. Mensajería del Valle): se llama a un microservicio
-   del cliente que retorna la prioridad. Si falla, se usa fallback local.
-
-2. Reglas locales (ej. Gases del Orinoco): se evalúan las reglas del YAML
-   en orden. Primero busca coincidencia por palabras clave, luego usa
-   la prioridad_default de la categoría.
-
-El resultado siempre indica la fuente: "servicio_externo", "reglas_locales" o "fallback".
-"""
 import logging
 import json
 import urllib.request
@@ -56,7 +42,6 @@ def asignar_prioridad(contexto: ContextoPipeline) -> ContextoPipeline:
     return contexto
 
 
-# ── Estrategia 1: Servicio externo ─────────────────────────────────────────────
 
 def _asignar_con_servicio_externo(
     contexto: ContextoPipeline,
@@ -100,7 +85,6 @@ def _asignar_con_servicio_externo(
         return ResultadoPrioridad(prioridad=resultado.prioridad, fuente="fallback")
 
 
-# ── Estrategia 2: Reglas locales ───────────────────────────────────────────────
 
 def _asignar_con_reglas_locales(
     contexto: ContextoPipeline,
@@ -148,7 +132,6 @@ def _asignar_con_reglas_locales(
     return ResultadoPrioridad(prioridad=Prioridad.MEDIA, fuente="reglas_locales")
 
 
-# ── HTTP helper (mockeable en tests) ──────────────────────────────────────────
 
 def http_post_json(url: str, payload: dict) -> dict:
     """
@@ -176,7 +159,6 @@ def http_post_json(url: str, payload: dict) -> dict:
         return json.loads(resp.read().decode("utf-8"))
 
 
-# ── Helper ────────────────────────────────────────────────────────────────────
 
 def _parse_prioridad(valor: Optional[str]) -> Optional[Prioridad]:
     """Convierte un string a enum Prioridad. Retorna None si no es válido."""

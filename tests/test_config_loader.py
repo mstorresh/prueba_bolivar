@@ -1,8 +1,3 @@
-"""
-Tests para el config loader.
-Verifica que las empresas se cargan correctamente y que los errores
-se manejan de forma controlada.
-"""
 import pytest
 import sys
 from pathlib import Path
@@ -12,11 +7,9 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from app.config.loader import get_company_config, CompanyNotFoundError
 
-
 class TestConfigLoader:
 
     def setup_method(self):
-        # Limpia cache entre tests para evitar estado compartido
         get_company_config.cache_clear()
 
     def test_carga_gases_del_orinoco(self):
@@ -36,7 +29,6 @@ class TestConfigLoader:
         assert "EMPRESA FANTASMA" in str(exc_info.value)
 
     def test_normalizacion_nombre_empresa(self):
-        # Debe funcionar con mayúsculas, minúsculas, guiones
         config1 = get_company_config("GASES DEL ORINOCO")
         config2 = get_company_config("gases del orinoco")
         assert config1.empresa_id == config2.empresa_id
@@ -49,5 +41,4 @@ class TestConfigLoader:
     def test_cache_funciona(self):
         config1 = get_company_config("GASES DEL ORINOCO")
         config2 = get_company_config("GASES DEL ORINOCO")
-        # Mismo objeto por cache
         assert config1 is config2

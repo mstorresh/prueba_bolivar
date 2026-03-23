@@ -1,8 +1,3 @@
-"""
-Interfaz abstracta para plataformas externas de atención al cliente.
-Cada empresa puede tener una plataforma distinta (Salesforce, ServiceNow, etc.).
-Todas deben implementar esta interfaz.
-"""
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
@@ -24,7 +19,7 @@ class CasoExterno:
 @dataclass
 class ResultadoCasoExterno:
     """Resultado de crear un caso en la plataforma externa."""
-    id_externo: str       # ID generado por la plataforma
+    id_externo: str      
     exitoso: bool
     mensaje: str | None = None
 

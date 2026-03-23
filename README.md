@@ -1,7 +1,7 @@
 # prueba_bolivar
 Prueba tecnica para seguros bolivar
 
-
+La idea es tener solo el branch main al final
 
 bpo-ai-service/
 │

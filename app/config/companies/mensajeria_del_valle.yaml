@@ -1,0 +1,52 @@
+empresa_id: "MENSAJERIA_DEL_VALLE"
+nombre: "Mensajería del Valle"
+
+categorias:
+  - "Pérdida de paquete"
+  - "Retraso en entrega"
+  - "Daño en mercancía"
+  - "Cambio de dirección"
+  - "Consulta de estado"
+  - "Otro"
+
+reglas_prioridad:
+  # Estas reglas son el FALLBACK si el servicio externo falla
+  - categoria: "Pérdida de paquete"
+    prioridad_default: "Alta"
+  - categoria: "Daño en mercancía"
+    palabras_clave: ["urgente", "frágil", "valor alto", "electrónico"]
+    prioridad: "Alta"
+  - categoria: "Daño en mercancía"
+    prioridad_default: "Media"
+  - categoria: "Retraso en entrega"
+    palabras_clave: ["urgente", "perecedero", "medicamento"]
+    prioridad: "Alta"
+  - categoria: "Retraso en entrega"
+    prioridad_default: "Media"
+  - categoria: "Cambio de dirección"
+    prioridad_default: "Media"
+  - categoria: "Consulta de estado"
+    prioridad_default: "Baja"
+  - categoria: "Otro"
+    prioridad_default: "Baja"
+
+delegaciones:
+  gestion_externa:
+    - "Pérdida de paquete"
+    - "Daño en mercancía"
+  respuesta_directa:
+    - "Retraso en entrega"
+    - "Cambio de dirección"
+    - "Consulta de estado"
+    - "Otro"
+
+plataforma_externa:
+  tipo: "mock_platform_default"
+  descripcion: "Plataforma de Mensajería del Valle"
+
+# Este cliente provee su propio microservicio para determinar prioridad
+prioridad_externa:
+  activa: true
+  endpoint_env_var: "MENSAJERIA_VALLE_PRIORITY_URL"
+  # Espera: { tipo_documento, numero_documento, tipo_solicitud }
+  # Retorna: { prioridad: "Alta" | "Media" | "Baja" }

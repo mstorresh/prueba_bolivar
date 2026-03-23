@@ -1,0 +1,12 @@
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+pydantic==2.10.3
+pydantic-settings==2.6.1
+PyYAML==6.0.2
+python-dotenv==1.0.1
+httpx==0.27.2          # Para llamadas HTTP a servicios externos
+groq==0.12.0           # Cliente oficial Groq
+openai==1.57.2         # Cliente OpenAI (compatible con Groq también)
+anthropic==0.40.0      # Cliente Anthropic (opcional)
+pytest==8.3.4
+pytest-asyncio==0.24.0

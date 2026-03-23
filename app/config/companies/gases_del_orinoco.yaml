@@ -1,0 +1,47 @@
+empresa_id: "GASES_DEL_ORINOCO"
+nombre: "Gases del Orinoco"
+
+categorias:
+  - "Incidente técnico"
+  - "Solicitud de instalación"
+  - "Consulta de facturación"
+  - "Reclamo comercial"
+  - "Solicitud de mantenimiento"
+  - "Otro"
+
+reglas_prioridad:
+  - categoria: "Incidente técnico"
+    palabras_clave: ["fuga", "explosión", "urgente", "falla", "peligro", "accidente", "incendio"]
+    prioridad: "Alta"
+  - categoria: "Incidente técnico"
+    prioridad_default: "Media"
+  - categoria: "Solicitud de instalación"
+    prioridad_default: "Media"
+  - categoria: "Consulta de facturación"
+    prioridad_default: "Baja"
+  - categoria: "Reclamo comercial"
+    palabras_clave: ["urgente", "legal", "demanda", "fraude"]
+    prioridad: "Alta"
+  - categoria: "Reclamo comercial"
+    prioridad_default: "Media"
+  - categoria: "Solicitud de mantenimiento"
+    prioridad_default: "Baja"
+  - categoria: "Otro"
+    prioridad_default: "Baja"
+
+delegaciones:
+  gestion_externa:
+    - "Incidente técnico"
+    - "Reclamo comercial"
+    - "Solicitud de instalación"
+  respuesta_directa:
+    - "Consulta de facturación"
+    - "Solicitud de mantenimiento"
+    - "Otro"
+
+plataforma_externa:
+  tipo: "mock_platform_default"
+  descripcion: "Plataforma interna simulada de Gases del Orinoco"
+
+prioridad_externa:
+  activa: false
